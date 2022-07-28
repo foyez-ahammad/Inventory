@@ -1,0 +1,62 @@
+{% extends 'partials/base.html' %}
+{% block title %} Staff {% endblock title %}
+
+{% block content %}
+
+{% include 'partials/topnav.html' %}
+
+<!--Table-->
+<div class="container">
+    <div class="row my-4">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    Staff Profile Page
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <span class="h4"> Staff Profile Information</span> <a class="btn btn-info btn-sm float-right"
+                                href="{% url 'dashboard-staff' %}">Back</a>
+                            <hr>
+                            <table class="table bg-white table-borderless">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Name</th>
+                                        <td>{{ staffs.username }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Email</th>
+                                        <td>{{ staffs.email }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Phone</th>
+                                        <td>{{ staffs.profile.phone }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Address</th>
+                                        <td>{{ staffs.profile.address }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div class="col-md-4">
+                            <img class="img-thumbnail" src="https://source.unsplash.com/600x960/?men" alt="Profile Image">
+                            {% comment %} <img class="img-thumbnail" src="{{ staffs.profile.image }}" alt="Profile Image"> {% endcomment %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!--End Table-->
+
+{% endblock content %}

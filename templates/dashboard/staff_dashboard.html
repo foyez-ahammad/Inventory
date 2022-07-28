@@ -1,0 +1,62 @@
+{% load crispy_forms_tags %}
+
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md-4">
+            {% for message in messages %}
+            {% if message %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+            {% endif %}
+            {% endfor %}
+            <div class="card">
+                <div class="card-header">
+                    Make Order Request
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{form|crispy}}
+                        <input class="btn btn-info btn-block" type="submit" value="Make Request">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    Orders Records
+                </div>
+                <div class="card-body">
+                    <table class="table bg-white">
+                        <thead class="bg-info text-white">
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Product</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Order By</th>
+                                <th scope="col">Date-Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for o in orders %}
+                            {% if o.staff == user %}
+                            <tr>
+                                <td>{{o.id}}</td>
+                                <td>{{o.product.name}}</td>
+                                <td>{{o.product.category}}</td>
+                                <td>{{o.order_quantity}}</td>
+                                <td>{{o.staff.username}}</td>
+                                <td>{{o.date}}</td>
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

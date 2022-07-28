@@ -1,0 +1,21 @@
+{% extends 'partials/base.html' %}
+{% block title %}Product Delete Page{% endblock %}
+
+{% block content %}
+
+<div class="row my-4">
+    <div class="col-md-6 offset-md-3">
+        <div class="border p-3 bg-white">
+            <span class="h4"> Delete Product</span> <a class="btn btn-secondary btn-sm float-right" href="{% url 'dashboard-product' %}">Cencel</a>
+            <hr>
+            <form method="POST">
+                <div class="alert alert-danger">
+                    <h4>Are you sure, you want to delete {{ delete_product }}?</h4>
+                </div>
+                {% csrf_token %}
+                <input class="btn btn-danger btn-sm btn-lm btn-block" type="submit" value="Confirm">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'partials/base.html' %}
+{% block title %}Products Edit Page{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="row my-4">
+    <div class="col-md-6 offset-md-3 p-3 bg-white">
+        <span class="h4"> Update Product</span> <a class="btn btn-secondary btn-sm float-right" href="{% url 'dashboard-product' %}">Cencel</a>
+            <hr>
+        <form method="POST">
+            {% csrf_token %}
+            {{ edit_product|crispy }}
+            <input class="btn btn-info btn-sm btn-lm btn-block" type="submit" value="Update">
+        </form>
+    </div>
+</div>
+
+{% endblock %}
