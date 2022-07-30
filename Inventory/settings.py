@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-guyv4#pt-^1sit1o1lhv8#hnih^t9)-utv3!tagcnk6u9clz6=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+
+    'whitenoise.runserver_nostatic', # custom
+
     'django.contrib.staticfiles',
 
     # custom line
@@ -51,6 +54,9 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4' #crispy response form
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+
+    'whitenoise.middleware.WhiteNoiseMiddleware', # custom
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -126,10 +132,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static') # custom
 STATIC_URL = 'static/'
 
 # custom added static directory
-STATICFILES_DIRS = [path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [path.join(BASE_DIR, 'static')] #custom
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage" # custom
 
 #custom added template directory
 LOGIN_REDIRECT_URL = 'dashboard' #when login user. user redirect with this link
