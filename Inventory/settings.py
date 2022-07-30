@@ -136,7 +136,7 @@ STATIC_ROOT = path.join(BASE_DIR, 'static') # custom
 STATIC_URL = 'static/'
 
 # custom added static directory
-STATICFILES_DIRS = [path.join(BASE_DIR, 'static')] #custom
+# STATICFILES_DIRS = [path.join(BASE_DIR, 'static')] #custom
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage" # custom
 
 #custom added template directory
