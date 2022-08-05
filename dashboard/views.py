@@ -57,8 +57,14 @@ def staff(request):
 @login_required
 def staff_detail(request, id):
     primary_id = User.objects.get(pk=id)
+    staff_num = User.objects.all().count()
+    product_num = Product.objects.all().count
+    order_num = Order.objects.all().count
     context = {
-        'staffs': primary_id
+        'staffs': primary_id,
+        'staff_num': staff_num,
+        'product_num': product_num,
+        'order_num': order_num,
     }
     return render(request, 'dashboard/staff_detail.html', context)
 

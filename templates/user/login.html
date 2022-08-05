@@ -13,7 +13,7 @@
         {% endif %}
         {% endfor %}
         <div class="border p-3 bg-white">
-            <span class="h4"> Login Page</span> <a class="btn btn-success btn-sm float-right" href="{% url 'user-register' %}">Register</a>
+            <span class="h4"> Login Page</span> <a class="float-right" href="{% url 'password_reset' %}">Forget Password?</a>
             <hr>
             <form method="POST">
                 {% csrf_token %}
